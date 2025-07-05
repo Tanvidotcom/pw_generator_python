@@ -1,0 +1,26 @@
+import random
+import string
+
+print("Simple Password Generator")
+try:
+    n_letters = int(input("How many letters? "))
+    n_symbols = int(input("How many symbols? "))
+    n_numbers = int(input("How many numbers? "))
+except ValueError:
+    print(" Please enter numbers only.")
+    exit()
+
+letters = string.ascii_letters
+symbols = "!@#$%&*+_"
+numbers = string.digits
+
+password_chars = (
+    [random.choice(letters) for _ in range(n_letters)] +
+    [random.choice(symbols) for _ in range(n_symbols)] +
+    [random.choice(numbers) for _ in range(n_numbers)]
+)
+
+random.shuffle(password_chars)
+password = ''.join(password_chars)
+
+print("\nGenerated password:", password)
